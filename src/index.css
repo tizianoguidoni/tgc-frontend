@@ -510,3 +510,8 @@ h1, h2, h3, h4, h5, h6, .orbitron {
   .nav-links { display: none; }
   .navbar { padding: 0 1rem; }
 }
+
+/* INPUT FIX */
+.form-control { color: #ffffff; width: 100%; }
+.form-control::placeholder { color: rgba(255,255,255,0.35); }
+.form-control:focus { outline: none; color: #ffffff; }

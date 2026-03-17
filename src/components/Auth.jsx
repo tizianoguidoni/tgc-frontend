@@ -55,7 +55,7 @@ export default function Auth() {
             <input 
               type="email" 
               className="form-control" 
-              style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-glass)', borderRadius: '12px', padding: '1rem' }}
+              style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-glass)', borderRadius: '12px', padding: '1rem', color: '#ffffff' }}
               value={email} 
               onChange={(e) => setEmail(e.target.value)} 
               placeholder="operator@rippack.network"
@@ -69,7 +69,7 @@ export default function Auth() {
             <input 
               type="password" 
               className="form-control" 
-              style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-glass)', borderRadius: '12px', padding: '1rem' }}
+              style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid var(--border-glass)', borderRadius: '12px', padding: '1rem', color: '#ffffff' }}
               value={password} 
               onChange={(e) => setPassword(e.target.value)} 
               placeholder="••••••••"
