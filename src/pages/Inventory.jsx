@@ -87,7 +87,7 @@ export default function Inventory() {
             <p>No cards yet — open packs to collect!</p>
           </div>
         ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))', gap: 16 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 150px))', gap: 16, justifyContent: 'start' }}>
             {filtered.map((item, idx) => {
               const card = item.card || item;
               const r = RARITY[card.rarity] || RARITY.Common;

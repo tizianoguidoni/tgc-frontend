@@ -35,7 +35,7 @@ function CardMini({ card, selected, onClick, disabled, showAttack }) {
       <div style={{ padding: '6px 8px' }}>
         <div style={{ color: '#fff', fontSize: '0.75rem', fontWeight: 600, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{card.name}</div>
         <div style={{ color, fontSize: '0.65rem', textTransform: 'uppercase' }}>{card.rarity}</div>
-        {showAttack && <div style={{ color: '#00FF94', fontSize: '0.7rem', marginTop: 2 }}>⚡ {calcAttack(card)}</div>}
+        <div style={{ color: '#00FF94', fontSize: '0.7rem', marginTop: 2 }}>⚡ ATK: {calcAttack(card)}</div>
       </div>
       {selected && <div style={{ position: 'absolute', top: 4, right: 4, background: '#00FF94', borderRadius: '50%', width: 18, height: 18, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✓</div>}
     </div>
