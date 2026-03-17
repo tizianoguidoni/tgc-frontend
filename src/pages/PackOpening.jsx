@@ -31,7 +31,7 @@ function CardReveal({ card, onNext, hasMore }) {
           border: `2px solid ${style.border}`, position: 'relative'
         }}
       >
-        <img src={card.image_url} alt={card.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <img src={card.image_url} alt={card.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.onerror=None; e.target.src='https://placehold.co/280x280/111/00FF94?text='+card.name; }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)' }} />
         <div className="holo" style={{ position: 'absolute', inset: 0 }} />
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1rem' }}>
