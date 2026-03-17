@@ -11,6 +11,7 @@ export default function Navbar() {
   const nav = [
     { path: '/', icon: Home, label: 'Home' },
     { path: '/inventory', icon: Archive, label: 'Collection' },
+    { path: '/leaderboard', icon: Trophy, label: 'Ranks' },
     { path: '/shop', icon: Store, label: 'Shop' },
   ];
 
