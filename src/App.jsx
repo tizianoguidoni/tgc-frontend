@@ -1,43 +1,33 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
-import Navbar from './components/Navbar';
-import Dashboard from './components/Dashboard';
-import Inventory from './components/Inventory';
-import Shop from './components/Shop';
-import AuthParams from './components/Auth';
-import './index.css';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import PackOpening from './pages/PackOpening';
+import Inventory from './pages/Inventory';
+import Shop from './pages/Shop';
 
-const ProtectedRoute = ({ children }) => {
+function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
-  if (loading) return <div>Loading...</div>;
-  if (!user) return <Navigate to="/auth" />;
-  return children;
-};
+  if (loading) return (
+    <div style={{ minHeight: '100vh', background: '#050505', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div className="font-display" style={{ color: '#00FF94', fontSize: '1.5rem', animation: 'pulse-dot 2s ease-in-out infinite' }}>Loading...</div>
+    </div>
+  );
+  return user ? children : <Navigate to="/login" />;
+}
 
-function App() {
+export default function App() {
   return (
     <AuthProvider>
-      <Router>
-        <div className="app-container">
-          <Routes>
-            <Route path="/auth" element={<AuthParams />} />
-            <Route path="/*" element={
-              <ProtectedRoute>
-                <>
-                  <Navbar />
-                  <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/inventory" element={<Inventory />} />
-                    <Route path="/shop" element={<Shop />} />
-                  </Routes>
-                </>
-              </ProtectedRoute>
-            } />
-          </Routes>
-        </div>
-      </Router>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+          <Route path="/open-pack" element={<ProtectedRoute><PackOpening /></ProtectedRoute>} />
+          <Route path="/inventory" element={<ProtectedRoute><Inventory /></ProtectedRoute>} />
+          <Route path="/shop" element={<ProtectedRoute><Shop /></ProtectedRoute>} />
+        </Routes>
+      </BrowserRouter>
     </AuthProvider>
   );
 }
-
-export default App;

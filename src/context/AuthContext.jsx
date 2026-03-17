@@ -1,8 +1,9 @@
 import { createContext, useState, useEffect, useContext } from 'react';
 
 const AuthContext = createContext();
-
 export const useAuth = () => useContext(AuthContext);
+
+const API_URL = import.meta.env.VITE_API_URL || '';
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -22,7 +23,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const res = await fetch((import.meta.env.VITE_API_URL || '') + '/auth/me', {
+      const res = await fetch(`${API_URL}/auth/me`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.ok) {
@@ -31,8 +32,7 @@ export const AuthProvider = ({ children }) => {
       } else {
         setToken(null);
       }
-    } catch (err) {
-      console.error(err);
+    } catch {
       setToken(null);
     } finally {
       setLoading(false);
@@ -41,15 +41,13 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const formData = new URLSearchParams();
-    formData.append('username', email); // OAuth2 expects 'username'
+    formData.append('username', email);
     formData.append('password', password);
-    
-    const res = await fetch((import.meta.env.VITE_API_URL || '') + '/auth/token', {
+    const res = await fetch(`${API_URL}/auth/token`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: formData
     });
-    
     if (res.ok) {
       const data = await res.json();
       setToken(data.access_token);
@@ -59,7 +57,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (email, password) => {
-    const res = await fetch((import.meta.env.VITE_API_URL || '') + '/auth/register', {
+    const res = await fetch(`${API_URL}/auth/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
@@ -67,9 +65,7 @@ export const AuthProvider = ({ children }) => {
     return res.ok;
   };
 
-  const logout = () => {
-    setToken(null);
-  };
+  const logout = () => setToken(null);
 
   return (
     <AuthContext.Provider value={{ user, token, loading, login, register, logout, fetchUser }}>
