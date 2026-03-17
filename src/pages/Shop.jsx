@@ -11,8 +11,8 @@ export default function Shop() {
   const [loading, setLoading] = useState(null);
 
   const packages = [
-    { id: '3_packs', name: 'Starter Bundle', packs: 3, price: '$2.99', features: ['3 Packs', 'Instant Delivery', 'Support the Dev'], popular: false },
-    { id: '10_packs', name: 'Mega Bundle', packs: 10, price: '$7.99', features: ['10 Packs', 'Best Value', '20% Savings', 'Support the Dev'], popular: true },
+    { id: '3_packs', name: 'Starter Bundle', packs: 3, price: '$2.99', features: ['3 Packs', 'Instant Delivery', 'Each pack = 5 cards'], popular: false },
+    { id: '10_packs', name: 'Mega Bundle', packs: 10, price: '$7.99', features: ['10 Packs', 'Best Value', '50 cards total', '20% Savings'], popular: true },
   ];
 
   const handleBuy = async (packageId) => {
