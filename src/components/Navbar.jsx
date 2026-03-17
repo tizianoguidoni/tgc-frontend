@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Home, Archive, Store, LogOut, Package, Menu, X, Trophy } from 'lucide-react';
+import { Home, Archive, Store, LogOut, Package, Menu, X, Trophy, Swords } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Navbar() {
@@ -12,6 +12,7 @@ export default function Navbar() {
     { path: '/', icon: Home, label: 'Home' },
     { path: '/inventory', icon: Archive, label: 'Collection' },
     { path: '/leaderboard', icon: Trophy, label: 'Ranks' },
+    { path: '/battle', icon: Swords, label: 'Battle' },
     { path: '/shop', icon: Store, label: 'Shop' },
   ];
 

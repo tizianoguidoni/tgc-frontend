@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import PackOpening from './pages/PackOpening';
 import Inventory from './pages/Inventory';
 import Shop from './pages/Shop';
+import Battle from './pages/Battle';
 import Leaderboard from './pages/Leaderboard';
 
 function ProtectedRoute({ children }) {
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/open-pack" element={<ProtectedRoute><PackOpening /></ProtectedRoute>} />
           <Route path="/inventory" element={<ProtectedRoute><Inventory /></ProtectedRoute>} />
           <Route path="/shop" element={<ProtectedRoute><Shop /></ProtectedRoute>} />
+          <Route path="/battle" element={<ProtectedRoute><Battle /></ProtectedRoute>} />
           <Route path="/leaderboard" element={<ProtectedRoute><Leaderboard /></ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
